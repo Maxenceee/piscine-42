@@ -12,71 +12,45 @@
 
 #include <unistd.h>
 
-char	*ft_strcpy(char *dest, char *src)
+void	ft_putchar(char c)
 {
-	int	i;
-
-	i = 0;
-	while (*src != '\0')
-	{
-		dest[i] = *src;
-		src++;
-		i++;
-	}
-	while (dest[i])
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
+	write(1, &c, 1);
 }
 
-void	dec_to_hexa(int str)
+int	ft_char_is_printable(char c)
 {
-	int		r;
-	int		i;
-	char	base[16];
-	char	hexa[3];
-
-	ft_strcpy(base, "0123456789abcdef");
-	i = 0;
-	hexa[0] = '\\';
-	if (str < 16)
-	{
-		hexa[1] = '0';
-	}
-	while (str > 0)
-	{
-		r = str % 16;
-		hexa[3 - i - 1] = base[r];
-		str = str / 16;
-		i++;
-	}
-	i = 0;
-	while (hexa[i])
-	{
-		write(1, &hexa[i], 1);
-		i++;
-	}
+	if (c >= 32 && c <= 126)
+		return (1);
+	else
+		return (0);
 }
 
 void	ft_putstr_non_printable(char *str)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] < 32 || str[i] > 126)
+		if (ft_char_is_printable(str[i]) == 1)
+			ft_putchar(str[i]);
+		else
 		{
-			dec_to_hexa(str[i]);
-			i++;
+			ft_putchar('\\');
+			ft_putchar("0123456789abcdef"[str[i] / 16]);
+			ft_putchar("0123456789abcdef"[str[i] % 16]);
 		}
-		if (str[i] == '\0')
-			return ;
-		write(1, &str[i], 1);
 		i++;
 	}
 }
+
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	char a[] = "salut, comment\ttu vas\n ? 42mots quarante-deux;\v cinquante+et+un";
+	ft_putstr_non_printable(a);
+	return (0);
+}
+*/

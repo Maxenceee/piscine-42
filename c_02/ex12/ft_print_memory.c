@@ -10,93 +10,83 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdbool.h>
 #include <unistd.h>
 
-void	ft_put_str(char *str)
-{
-	int	i;
+#define MAX_PAGE_SIZE 14
 
-	i = 0;
-	while (i < 16)
-	{
-		if (str[i])
-		{
-			if (str[i] < 32 || str[i] == 127)
-			{
-				write(1, ".", 1);
-			}
-			else
-			{
-				write(1, &str[i], 1);
-			}
-		}
-		else
-			return ;
-		i++;
-	}
+void	ft_buffer_number(int number, int radix, int buffer[], int index)
+{
+	if (number > radix - 1)
+		ft_buffer_number(number / radix, radix, buffer, index + 1);
+	buffer[index] = number % radix;
 }
 
-void	ft_putnbr_base(unsigned long long int nbr, char *base)
+void	ft_write_hex(unsigned int number, int radix, int char_count)
 {
-	unsigned long long int	base_value;
-	char					c;
-	int						i;
+	int	buffer[MAX_PAGE_SIZE + 1];
+	int	index;
 
-	i = 0;
-	while (base[i] != 0)
-	{
-		i += 1;
-	}
-	base_value = i;
-	if (nbr >= base_value)
-	{
-		ft_putnbr_base(nbr / base_value, base);
-		ft_putnbr_base(nbr % base_value, base);
-	}
+	index = -1;
+	while (index++ < MAX_PAGE_SIZE)
+		buffer[index] = 0;
+	ft_buffer_number(number, radix, buffer, 0);
+	index = -1;
+	while (index++ < char_count)
+		write(1, &"0123456789abcdefgh"[buffer[char_count - index]], 1);
+}
+
+void	ft_write_safe_char(char *c)
+{
+	if (*c >= ' ' && *c != 127)
+		write(1, c, 1);
 	else
-	{
-		c = base[nbr % base_value];
-		write(1, &c, 1);
-	}
+		write(1, &".", 1);
 }
 
-void	print_char_in_hex(char *str, char *hexa)
+void	ft_print_memory_at(void *start_addr, unsigned int size, char *curr_addr)
 {
-	unsigned int	i;
+	int index;
 
-	i = 0;
-	while (i < 16)
+	ft_write_hex((unsigned int)curr_addr, 16, MAX_PAGE_SIZE);
+	write(1, &": ", 2);
+	index = 0;
+	while (index++ < 16)
 	{
-		if (i % 2 == 0)
-			write(1, " ", 1);
-		if (str[i])
-			ft_putnbr_base(str[i], hexa);
+		if (start_addr + size <= (void *)(curr_addr + index - 1))
+			write(1, &"  ", 2);
 		else
-			write(1, "  ", 1);
-		i++;
+			ft_write_hex((unsigned char)*(curr_addr + index - 1), 16, 1);
+		if (index % 2 == 0)
+			write(1, &" ", 1);
 	}
+	index = 0;
+	while (index++ < 16)
+		if (start_addr + size > (void *)(curr_addr + index - 1))
+			ft_write_safe_char((char *)curr_addr + index - 1);
 }
 
 void	*ft_print_memory(void *addr, unsigned int size)
 {
-	char			*str;
-	char			*hexa;
-	unsigned int	loop;
+	char	*curr_addr;
 
-	loop = 0;
-	str = (char *)addr;
-	hexa = "0123456789abcdef";
-	if (size == 0)
-		return (addr);
-	while (loop <= (size / 16))
+	curr_addr = (char *)addr;
+	while ((void *)curr_addr < (addr + size))
 	{
-		ft_putnbr_base((unsigned long long) &str[loop * 16], hexa);
-		write(1, ":", 1);
-		print_char_in_hex(&str[loop * 16], hexa);
-		write(1, " ", 1);
-		ft_put_str(&str[loop * 16]);
-		loop++;
-		write(1, "\n", 1);
+		ft_print_memory_at(addr, size, curr_addr);
+		write(1, &"\n", 1);
+		curr_addr += 16;
 	}
 	return (addr);
 }
+
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	char a[] = "salut, comment\ttu vas\n ? 42mots quarante-deux;";
+	ft_print_memory(a, 64);
+	return (0);
+}
+*/
