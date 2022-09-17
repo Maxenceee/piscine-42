@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+
 int	check_separator(char c, char *charset)
 {
 	int	i;

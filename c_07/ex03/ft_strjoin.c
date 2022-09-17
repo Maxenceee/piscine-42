@@ -13,51 +13,74 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int	calc_size_tab(char **strs, int size)
+int	ft_str_length(char *str)
 {
-	int	i;
-	int	j;
-	int	l;
+	int	index;
 
-	i = 0;
-	l = 0;
-	while (i < size)
+	index = 0;
+	while (str[index])
+		index++;
+	return (index);
+}
+
+char	*ft_strcpy(char *dest, char *src)
+{
+	int	index;
+
+	index = 0;
+	while (src[index] != '\0')
 	{
-		j = 0;
-		while (strs[i][j++] != '\0')
-			l++;
-		i++;
+		dest[index] = src[index];
+		index++;
 	}
-	return (l);
+	dest[index] = '\0';
+	return (dest);
+}
+
+int	ft_compute_final_length(char **strings, int size, int sep_length)
+{
+	int	final_length;
+	int	index;
+
+	final_length = 0;
+	index = 0;
+	while (index < size)
+	{
+		final_length += ft_str_length(strings[index]);
+		final_length += sep_length;
+		index++;
+	}
+	final_length -= sep_length;
+	return (final_length);
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
-	int		i;
-	int		j;
-	int		u;
-	char	*n;
+	int		full_length;
+	int		index;
+	char	*string;
+	char	*d;
 
-	i = 0;
-	u = 0;
-	n = malloc(sizeof(char) * calc_size_tab(strs, size));
-	if (!n)
+	if (size == 0)
+		return ((char *)malloc(sizeof(char)));
+	full_length = ft_compute_final_length(strs, size, ft_str_length(sep));
+	d = (string = (char *)malloc((full_length + 1) * sizeof(char)));
+	if (!d)
 		return (0);
-	while (i < size)
+	index = 0;
+	while (index < size)
 	{
-		j = 0;
-		while (strs[i][j] != '\0')
+		ft_strcpy(d, strs[index]);
+		d += ft_str_length(strs[index]);
+		if (index < size - 1)
 		{
-			n[u++] = strs[i][j++];
+			ft_strcpy(d, sep);
+			d += ft_str_length(sep);
 		}
-		j = 0;
-		if (i < size - 1)
-			while (sep[j] != '\0')
-				n[u++] = sep[j++];
-		i++;
+		index++;
 	}
-	n[u] = '\0';
-	return (n);
+	*d = '\0';
+	return (string);
 }
 
 /*
@@ -65,7 +88,7 @@ int	main(void)
 {
 	char	*a[] = {"abcd" ,"efgh", "ijkl"};
 
-	printf("%s", ft_strjoin(3, a, "-a-"));
+	printf("%s", ft_strjoin(3, a, "--"));
 	return (0);
 }
 */

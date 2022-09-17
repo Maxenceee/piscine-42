@@ -14,87 +14,118 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int				ft_pow(int a, int b);
-int				is_in(char *sr, char pr, int gap);
-int				convert_base_in_int(char *src, char *base, int base_len);
-int				is_correct_base(char *base);
-int				ft_atoi_base(char *str, char *base);
-void			ft_rev_int_tab(char *tab, int size);
-unsigned int	ft_strlen(char *str);
-void			ft_putnbr_base(int nbr, char *base, char *v);
-char			*ft_convert_base(char *nbr, char *base_from, char *base_to);
+#include <stdlib.h>
+void	ft_putnbr_base_v2(int nbr, char *base, char *nbrf);
+int		lenght_nbr(int nbr, char *base, int lenght);
 
-void	ft_rev_int_tab(char *tab, int size)
+int	checkerror(char *str)
 {
-	int	count;
-	int	d;
-	int	e;
-
-	count = 0;
-	while (count < size / 2)
-	{
-		d = tab[count];
-		e = tab[size - count - 1];
-		tab[size - count - 1] = d;
-		tab[count] = e;
-		count++;
-	}
-}
-
-unsigned int	ft_strlen(char *str)
-{
-	unsigned int	i;
+	int	i;
+	int	j;
 
 	i = 0;
-	while (str[i])
+	if (str[0] == '\0' || str[1] == '\0')
+		return (0);
+	while (str[i] != '\0')
 	{
+		if ((str[i] >= 9 && str[i] <= 13) || str[i] == 32
+			|| str[i] == 43 || str[i] == 45)
+			return (0);
+		j = i + 1;
+		while (str[j] != '\0')
+		{
+			if (str[i] == str[j])
+				return (0);
+			j++;
+		}
 		i++;
 	}
 	return (i);
 }
 
-void	ft_putnbr_base(int nbr, char *base, char *v)
+int	nb_base(char str, char *base)
 {
-	unsigned int	len_base;
-	unsigned int	a;
-	unsigned int	i;
+	int	nb;
+
+	nb = 0;
+	while (base[nb] != '\0')
+	{
+		if (str == base[nb])
+			return (nb);
+		nb++;
+	}
+	return (-1);
+}
+
+int	whitespaces(char *str, int *ptr_i)
+{
+	int	count;
+	int	i;
 
 	i = 0;
-	len_base = ft_strlen(base);
-	if (nbr < 0)
+	count = 1;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	while ((str[i] != '\0') && (str[i] == 43 || str[i] == 45))
 	{
-		a = -nbr;
-	}
-	else
-		a = nbr;
-	while (a != 0)
-	{
-		v[i] = base[a % len_base];
-		a /= len_base;
+		if (str[i] == 45)
+			count *= -1;
 		i++;
 	}
+	*ptr_i = i;
+	return (count);
+}
+
+int	ft_atoi_base(char *str, char *base)
+{
+	int	i;
+	int	count;
+	int	nb;
+	int	nb2;
+	int	base_lenght;
+
+	nb = 0;
+	i = 0;
+	base_lenght = checkerror(base);
+	if (base_lenght >= 2)
+	{
+		count = whitespaces(str, &i);
+		nb2 = nb_base(str[i], base);
+		while (nb2 != -1)
+		{
+			nb = (nb * base_lenght) + nb2;
+			i++;
+			nb2 = nb_base(str[i], base);
+		}
+		return (nb *= count);
+	}
+	return (0);
 }
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	int					i;
-	unsigned int		len;
-	char				*v;
+	char	*finalnbr;
+	int		mednbr;
+	int		lenght_nbrf;
+	char	*d;
 
-	if (!is_correct_base(base_from) || !is_correct_base(base_to))
+	if (checkerror(base_to) == 0 || checkerror(base_from) == 0)
 		return (0);
-	v = malloc(sizeof(char));
-	if (!v)
+	mednbr = ft_atoi_base(nbr, base_from);
+	lenght_nbrf = lenght_nbr(mednbr, base_to, 0);
+	d = (finalnbr = (char *)malloc(sizeof(char) * (lenght_nbrf + 1)));
+	if (!d)
 		return (0);
-	i = ft_atoi_base(nbr, base_from);
-	ft_putnbr_base(i, base_to, v);
-	len = ft_strlen(v);
-	if (i < 0)
-	{
-		v[len] = '-';
-		len = ft_strlen(v);
-	}
-	v[len] = '\0';
-	ft_rev_int_tab(v, ft_strlen(v));
-	return (v);
+	ft_putnbr_base_v2(mednbr, base_to, finalnbr);
+	finalnbr[lenght_nbrf] = '\0';
+	return (finalnbr);
 }
+
+/*
+#include <stdio.h>
+
+int	main(int argc, char **argv)
+{
+	printf("%s", ft_convert_base(argv[1], argv[2], argv[3]));
+}
+*/
