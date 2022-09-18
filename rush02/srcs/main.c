@@ -44,6 +44,8 @@ int	main(int ac, char **av)
 
 	printf("number to write %s\n", av[1]);
 	dict = parse_dict(dict_name);
+	if (dict.size == 0)
+		return (1);
 
 	/* temporary */
 	printf("size of parsed dict: %d items\ncontent: \n", dict.size);

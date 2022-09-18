@@ -1,4 +1,4 @@
-CC=cc
+CC=gcc
 CFILES=$(shell find srcs -type f -name "*.c")
 HEADERS_DIR=includes/
 CFLAGS=-Wall -Wextra -Werror -I $(HEADERS_DIR)

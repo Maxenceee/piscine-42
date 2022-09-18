@@ -25,6 +25,11 @@ t_parsed_dict	parse_dict(char *dict_name)
 	t_parsed_dict	parsed_dict;
 
 	dict = read_file(dict_name);
+	if (dict.size == 0)
+	{
+		parsed_dict.size = 0;
+		return (parsed_dict);
+	}
 	printf("size of dict: %d\ncontent: \n%s\n", dict.size, dict.content);
 	parsed_dict = parse_to_tab(dict);
 	return (parsed_dict);
@@ -83,6 +88,7 @@ t_parsed_dict	parse_to_tab(t_dict dict)
 		if (is_first_bigger(sub_split[0], "4294967295") <= 0)
 		{
 			temp_num.value = ft_atoi(sub_split[0]);
+			temp_num.len = get_num_len(temp_num.value);
 			temp_num.name = sub_split[1];
 			fnl[i++] = temp_num;
 		}

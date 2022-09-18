@@ -45,6 +45,21 @@ int	count_key_word(char	*content)
 	return (kcount);
 }
 
+int	get_num_len(int num)
+{
+	int	div;
+	int	c;
+
+	c = 0;
+	div = 1;
+	while (num / div > 10)
+	{
+		div *= 10;
+		c++;
+	}
+	return (c);
+}
+
 unsigned int	ft_atoi(char *str)
 {
 	int				i;

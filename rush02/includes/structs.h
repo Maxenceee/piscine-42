@@ -16,6 +16,7 @@
 typedef struct s_numbers_name
 {
 	unsigned int	value;
+	unsigned int	len;
 	char			*name;
 }	t_numbers_name;
 

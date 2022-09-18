@@ -23,8 +23,7 @@ t_parsed_dict	parse_to_tab(t_dict dict);
 
 int				ft_strlen(char	*str);
 int				count_key_word(char	*content);
+int				get_num_len(int num);
 unsigned int	ft_atoi(char *str);
-void			ft_putnbr(unsigned int nb);
-void			ft_putchar(char c);
 
 #endif
