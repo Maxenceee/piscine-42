@@ -1,5 +1,5 @@
 CC=gcc
-CFILES=$(shell find srcs -type f -name "*.c")
+CFILES=srcs/main.c srcs/parsing.c srcs/parsing_utils.c srcs/ft_split.c srcs/ft_sort.c srcs/create_elem.c srcs/converter.c srcs/converter_utils.c
 HEADERS_DIR=includes/
 CFLAGS=-Wall -Wextra -Werror -I $(HEADERS_DIR)
 NAME=rush-02

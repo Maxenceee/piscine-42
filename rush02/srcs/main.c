@@ -10,51 +10,62 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-
 #include "structs.h"
 #include "parsing.h"
+#include "converter.h"
 #include "functions.h"
+
+void	print_error(char *error)
+{
+	while (*error)
+	{
+		write(2, error++, 1);
+	}
+}
+
+void	ft_print(char *msg)
+{
+	while (*msg)
+	{
+		write(1, msg++, 1);
+	}
+}
+
+int	can_num_be_written(char *num)
+{
+	if (is_first_bigger(num, "4294967295") || contains(num, '.'))
+	{
+		print_error("Error\n");
+		return (0);
+	}
+	return (1);
+}
 
 int	main(int ac, char **av)
 {
-	char			*dict_name;
+	char			*dict_path;
 	t_parsed_dict	dict;
-	int				number;
+	unsigned int	number;
 
-	dict_name = "resources/numbers.dict";
+	dict_path = "resources/numbers.dict";
 	if (ac == 2)
 	{
-		printf("default dict\n");
-		number = av[1];
+		if (!can_num_be_written(av[1]))
+			return (1);
+		number = ft_atoi(av[1]);
 	}
 	else if (ac == 3)
 	{
-		printf("custom dict\n");
-		dict_name = av[1];
-		number = av[2];
+		if (!can_num_be_written(av[2]))
+			return (1);
+		dict_path = av[1];
+		number = ft_atoi(av[2]);
 	}
 	else
-	{
-		printf("invalid arguments\n");
 		return (1);
-	}
-
-	printf("number to write %s\n", av[1]);
-	dict = parse_dict(dict_name);
+	dict = parse_dict(dict_path);
 	if (dict.size == 0)
 		return (1);
-
-	/* temporary */
-	printf("size of parsed dict: %d items\ncontent: \n", dict.size);
-	int	i = 0;
-	while (i < dict.size)
-	{
-		printf("%u = %s\n", dict.content[i].value, dict.content[i].name);
-		i++;
-	}
-
+	convert_num_to_letters(number, dict);
 	return (0);
 }

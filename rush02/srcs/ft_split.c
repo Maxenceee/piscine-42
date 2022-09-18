@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "structs.h"
+#include "functions.h"
 
 int	check_separator(char c, char *charset)
 {

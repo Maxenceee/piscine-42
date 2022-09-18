@@ -10,11 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-
 #include "structs.h"
 #include "parsing.h"
 #include "functions.h"
@@ -30,55 +25,45 @@ t_parsed_dict	parse_dict(char *dict_name)
 		parsed_dict.size = 0;
 		return (parsed_dict);
 	}
-	printf("size of dict: %d\ncontent: \n%s\n", dict.size, dict.content);
 	parsed_dict = parse_to_tab(dict);
 	return (parsed_dict);
 }
 
 t_dict	read_file(char *dict_name)
 {
-	int 	of;
-	int 	c;
-    char 	ch[30000];
+	int		of;
+	int		c;
+	char	ch[30000];
 	t_dict	dict;
 
-    of = open(dict_name, O_RDONLY);
+	of = open(dict_name, O_RDONLY);
 	if (of < 0)
 	{
-		printf("Dict Error\n");
+		print_error("Dict Error\n");
 		dict.size = 0;
 		return (dict);
-    }
+	}
 	c = read(of, ch, 30000);
-	if (close(of) < 0) 
-    {
-		printf("Dict Error\n");
+	if (close(of) < 0)
+	{
+		print_error("Dict Error\n");
 		dict.size = 0;
 		return (dict);
-    }
+	}
 	dict.content = ch;
 	dict.size = ft_strlen(ch);
 	return (dict);
 }
 
-t_parsed_dict	parse_to_tab(t_dict dict)
+void	string_to_object(t_dict dict, t_parsed_dict *parsed_dict, \
+t_numbers_name	*fnl)
 {
-	t_numbers_name	*fnl;
 	char			**tmp;
-	int 			i;
-	int 			j;
 	char			**sub_split;
 	t_numbers_name	temp_num;
-	int				kcount;
-	t_parsed_dict	parsed_dict;
+	int				i;
+	int				j;
 
-	kcount = count_key_word(dict.content);
-	fnl = malloc(sizeof(t_numbers_name) * kcount);
-	if (!fnl)
-	{
-		parsed_dict.size = 0;
-		return (parsed_dict);
-	}
 	tmp = ft_split(dict.content, "\n");
 	i = 0;
 	j = 0;
@@ -94,7 +79,24 @@ t_parsed_dict	parse_to_tab(t_dict dict)
 		}
 		j++;
 	}
-	parsed_dict.size = i;
-	parsed_dict.content = fnl;
+	parsed_dict->size = i;
+	parsed_dict->content = fnl;
+}
+
+t_parsed_dict	parse_to_tab(t_dict dict)
+{
+	t_numbers_name	*fnl;
+	int				kcount;
+	t_parsed_dict	parsed_dict;
+
+	kcount = count_key_word(dict.content);
+	fnl = malloc(sizeof(t_numbers_name) * kcount);
+	if (!fnl)
+	{
+		parsed_dict.size = 0;
+		print_error("Dict Error\n");
+		return (parsed_dict);
+	}
+	string_to_object(dict, &parsed_dict, fnl);
 	return (parsed_dict);
 }

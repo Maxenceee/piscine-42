@@ -32,4 +32,15 @@ typedef struct s_parsed_dict
 	t_numbers_name	*content;
 }	t_parsed_dict;
 
+typedef struct s_Element
+{
+	char				*name;
+	struct s_Element	*next;
+}	t_element;
+
+typedef struct s_List
+{
+	t_element	*data;
+}	t_list;
+
 #endif

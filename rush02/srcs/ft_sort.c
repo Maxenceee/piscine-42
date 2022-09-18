@@ -10,15 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "structs.h"
 #include "parsing.h"
 #include "functions.h"
 
-void swap(t_numbers_name *p1, t_numbers_name *p2)
+void	swap(t_numbers_name *p1, t_numbers_name *p2)
 {
-	t_numbers_name temp = *p1;
+	t_numbers_name	temp;
 
+	temp = *p1;
 	*p1 = *p2;
 	*p2 = temp;
 }

@@ -13,17 +13,29 @@
 #ifndef FUNCTIONS_H
 # define FUNCTIONS_H
 
-/* ft_split */
-int		check_separator(char c, char *charset);
-int		count_strings(char *str, char *charset);
-int		ft_strlen_sep(char *str, char *charset);
-char	*ft_word(char *str, char *charset);
-char	**ft_split(char *str, char *charset);
+# include <stdio.h>
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdlib.h>
 
-/* ft_sort */
+void		print_error(char *error);
+void		ft_print(char *msg);
+int			can_num_be_written(char *num);
 
-void	swap (t_numbers_name *p1, t_numbers_name *p2);
-int		is_first_bigger(char *s1, char *s2);
-void	ft_sort_int_tab(t_numbers_name *tab, int ac);
+int			check_separator(char c, char *charset);
+int			count_strings(char *str, char *charset);
+int			ft_strlen_sep(char *str, char *charset);
+char		*ft_word(char *str, char *charset);
+char		**ft_split(char *str, char *charset);
+
+void		swap(t_numbers_name *p1, t_numbers_name *p2);
+int			is_first_bigger(char *s1, char *s2);
+void		ft_sort_int_tab(t_numbers_name *tab, int ac);
+
+t_element	*create_element(char *name);
+t_list		*init(void);
+void		insert_elem(t_list *list, char *name);
+void		print_elem(t_list *list);
+void		free_elem(t_list *list);
 
 #endif

@@ -10,11 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-
 #include "structs.h"
 #include "parsing.h"
 
@@ -31,6 +26,17 @@ int	ft_strlen(char	*str)
 	return (count);
 }
 
+int	contains(char *str, char f)
+{
+	while (*str)
+	{
+		if (*str == f)
+			return (1);
+		str++;
+	}
+	return (0);
+}
+
 int	count_key_word(char	*content)
 {
 	int	kcount;
@@ -45,14 +51,14 @@ int	count_key_word(char	*content)
 	return (kcount);
 }
 
-int	get_num_len(int num)
+unsigned int	get_num_len(int num)
 {
 	int	div;
 	int	c;
 
-	c = 0;
+	c = 1;
 	div = 1;
-	while (num / div > 10)
+	while (num / div >= 10)
 	{
 		div *= 10;
 		c++;
