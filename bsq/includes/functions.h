@@ -30,7 +30,7 @@ void		board_printer(t_board board);
 
 int			min(int a, int b);
 int			ft_max_cell(t_board *board);
-void		ft_final_board(t_board *board,int dr);
+void		ft_final_board(t_board *board, int dr);
 void		ft_solver_board(t_board *board);
 
 #endif

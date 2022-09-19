@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef STRUCTS_H
+# define STRUCTS_H
+
 typedef enum cell_type
 {
 	empty = 0,
@@ -46,3 +49,5 @@ typedef struct s_display_characters
 	char	obscacle;
 	char	complete;
 }	t_display_characters;
+
+#endif
