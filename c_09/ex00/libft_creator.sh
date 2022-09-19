@@ -12,6 +12,8 @@
 
 #!/bin/sh
 
+rm -f libft.a
+
 gcc -c ft_putchar.c
 gcc -c ft_strcmp.c
 gcc -c ft_swap.c

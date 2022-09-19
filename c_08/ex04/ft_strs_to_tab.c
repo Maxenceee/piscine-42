@@ -10,63 +10,56 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stock_str.h"
-#include <stdio.h>
 #include <stdlib.h>
+#include "ft_stock_str.h"
 
-int	ft_strlen(char	*str)
+int	ft_str_length(char *str)
 {
-	int	count;
+	int	index;
 
-	count = 0;
-	while (*str != '\0')
-	{
-		str++;
-		count++;
-	}
-	return (count);
+	index = 0;
+	while (str[index])
+		index++;
+	return (index);
 }
 
 char	*ft_strdup(char *src)
 {
-	char	*str;
-	int		i;
+	int		index;
+	char	*dest;
+	char	*d;
 
-	str = malloc(ft_strlen(src) * sizeof(char));
-	if (!str)
+	index = 0;
+	d = (dest = (char *)malloc(ft_str_length(src) * sizeof(char) + 1));
+	if (!d)
 		return (0);
-	i = 0;
-	while (src[i] != '\0')
+	while (src[index])
 	{
-		str[i] = src[i];
-		i++;
+		dest[index] = src[index];
+		index++;
 	}
-	return (str);
+	dest[index] = '\0';
+	return (dest);
 }
 
 struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 {
-	t_stock_str	tmp;
-	t_stock_str	*fnl;
+	int					index;
+	struct s_stock_str	*array;
+	struct s_stock_str	*d;
 
-	fnl = malloc((ac + 1) * sizeof(t_stock_str));
-	if (!fnl)
+	d = (array = malloc((ac + 1) * sizeof(struct s_stock_str)));
+	if (!d)
+		return (NULL);
+	index = 0;
+	while (index < ac)
 	{
-		free(fnl);
-		return (0);
+		array[index].size = ft_str_length(av[index]);
+		array[index].str = av[index];
+		array[index].copy = ft_strdup(av[index]);
+		index++;
 	}
-	while (ac-- > 0)
-	{
-		tmp.size = ft_strlen(av[ac]);
-		tmp.str = av[ac];
-		tmp.copy = ft_strdup(av[ac]);
-		if (!tmp.copy)
-			return (0);
-		fnl[ac] = tmp;
-	}
-	tmp.size = 0;
-	tmp.str = 0;
-	tmp.copy = 0;
-	fnl[ac + 1] = tmp;
-	return (0);
+	array[index].str = 0;
+	array[index].copy = 0;
+	return (array);
 }

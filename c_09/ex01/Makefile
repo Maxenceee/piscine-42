@@ -1,14 +1,15 @@
-CC			=	gcc
-CFILES		=	srcs/ft_putchar.c srcs/ft_putstr.c srcs/ft_strcmp.c srcs/ft_strlen.c srcs/ft_swap.c 
-HEADERS_DIR	=	includes/
-CFLAGS		=	-Wall -Wextra -Werror
-NAME		=	libft.a
-OBJS		=	${CFILES:.c=.o}
-LIBC		=	ar rc
-LIBR		=	ranlib
+SRCS	= srcs/ft_putchar.c srcs/ft_putstr.c srcs/ft_strlen.c srcs/ft_strcmp.c srcs/ft_swap.c
+OBJS	= ${SRCS:.c=.o}
+INCS	= includes
+NAME	= libft.a
+LIBC	= ar rc
+LIBR	= ranlib
+CC		= gcc
+RM		= rm -f
+CFLAGS	= -Wall -Wextra -Werror
 
 .c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I $(HEADERS_DIR)
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I ${INCS}
 
 ${NAME}: ${OBJS}
 	${LIBC} ${NAME} ${OBJS}
@@ -17,11 +18,9 @@ ${NAME}: ${OBJS}
 all: ${NAME}
 
 clean:
-	rm -rf srcs/*.o
+	${RM} ${OBJS}
 
 fclean: clean
-	rm -f $(NAME)
+	${RM} ${NAME}
 
 re: fclean all
-
-.PHONY: all clean fclean re .c.o

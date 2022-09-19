@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
 
 int	check_separator(char c, char *charset)
@@ -99,7 +98,6 @@ char	**ft_split(char *str, char *charset)
 }
 
 /*#include <stdio.h>
-
 int	main(int argc, char **argv)
 {
 	int		index;
