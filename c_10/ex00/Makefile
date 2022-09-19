@@ -1,19 +1,24 @@
-CC=cc
-CFILES=$(shell find . -type f -name "*.c")
-HEADERS_DIR=includes/
-CFLAGS=-Wall -Wextra -Werror -I $(HEADERS_DIR)
-NAME=ft_display_file
-OBJS=${CFILES:.c=.o}
+SRCS	=  ./display.c
+OBJS	= ${SRCS:.c=.o}
+NAME	= ft_display_file
+CC		= gcc
+RM		= rm -f
+CFLAGS	= -Wall -Wextra -Werror
 
-all: $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+.c.o :
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-clean:
-	rm -rf sources/*.o
+${NAME} : ${OBJS}
+	${CC} ${CFLAGS} ${OBJS} -o ${NAME}
 
-fclean: clean
-	rm -f $(NAME)
+all : ${NAME}
 
-re: fclean all
+clean :
+	${RM} ${OBJS}
 
-.PHONY: all clean fclean re
+fclean : clean
+	${RM} ${NAME}
+
+re : fclean all
+
+.PHONY: all clean fclean re .c.o
