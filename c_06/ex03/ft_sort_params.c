@@ -60,7 +60,7 @@ void	ft_sort_int_tab(char **tab, int ac)
 		a++;
 	}
 }
-/*
+
 int	main(int argc, char *argv[])
 {
 	int	i;
@@ -74,4 +74,3 @@ int	main(int argc, char *argv[])
 	}
 	return (0);
 }
-*/

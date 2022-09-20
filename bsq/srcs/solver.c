@@ -6,7 +6,7 @@
 /*   By: ileconte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:17:58 by ileconte          #+#    #+#             */
-/*   Updated: 2022/09/19 19:44:16 by ileconte         ###   ########lyon.fr   */
+/*   Updated: 2022/09/20 06:43:21 by ileconte         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	ft_solver_board(t_board *board)
 	int	y;
 
 	x = 1;
-	while(x < board->nb_rows)
+	while (x < board->nb_rows)
 	{
 		y = 1;
 		while (y < board->nb_cols)
@@ -106,8 +106,8 @@ void	ft_solver_board(t_board *board)
 				else
 					board->content[x][y].value = min(min(
 								board->content[x - 1][y].value,
-								board->content[x][y - 1].value), 
-								board->content[x - 1][y - 1].value) + 1;
+								board->content[x][y - 1].value),
+							board->content[x - 1][y - 1].value) + 1;
 			}
 			y++;
 		}

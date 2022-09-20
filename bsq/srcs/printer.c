@@ -6,7 +6,7 @@
 /*   By: mgama <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 19:01:10 by mgama             #+#    #+#             */
-/*   Updated: 2022/09/19 19:01:13 by mgama            ###   ########lyon.fr   */
+/*   Updated: 2022/09/20 00:17:54 by ileconte         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,11 @@ void	ft_print_char(char msg)
 
 void	board_printer(t_board board)
 {
-	int i = 0;
-	int j = 0;
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
 	while (i < board.nb_rows)
 	{
 		j = 0;

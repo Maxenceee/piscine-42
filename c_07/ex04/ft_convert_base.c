@@ -14,7 +14,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <stdlib.h>
 void	ft_putnbr_base_v2(int nbr, char *base, char *nbrf);
 int		lenght_nbr(int nbr, char *base, int lenght);
 

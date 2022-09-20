@@ -6,7 +6,7 @@
 /*   By: mgama <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 14:11:24 by mgama             #+#    #+#             */
-/*   Updated: 2022/09/17 14:11:27 by mgama            ###   ########lyon.fr   */
+/*   Updated: 2022/09/20 02:52:37 by ileconte         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int	ft_tablen(char	**str)
 
 t_display_characters	parse_diplay_characters(char *line)
 {
-	int	i;
-	int	u;
+	int						i;
+	int						u;
 	t_display_characters	res;
 
 	i = 0;
@@ -66,6 +66,24 @@ t_display_characters	parse_diplay_characters(char *line)
 	if (res.nb_lines <= 0)
 		return (res);
 	return (res);
+}
+
+void	parse_rows_cols(t_board *parsed_board, \
+t_display_characters line_sett, char **lines_split)
+{
+	int	line_len;
+
+	parsed_board->empty = line_sett.empty;
+	parsed_board->obscacle = line_sett.obscacle;
+	parsed_board->complete = line_sett.complete;
+	parsed_board->nb_rows = line_sett.nb_lines;
+	if (line_sett.nb_lines != ft_tablen(lines_split + 1))
+	{
+		parsed_board->nb_rows = 0;
+		return ;
+	}
+	line_len = check_lines_len(lines_split);
+	parsed_board->nb_cols = line_len;
 }
 
 int	check_lines_len(char **lines_split)
