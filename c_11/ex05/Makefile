@@ -7,7 +7,7 @@ RM		= rm -f
 CFLAGS	= -Wall -Wextra -Werror
 
 all:
-	${CC} ${CFLAGS}  ${SRCS} -o ${NAME}
+	${CC} ${CFLAGS} ${SRCS} -o ${NAME}
 
 clean:
 	${RM} ${OBJS}

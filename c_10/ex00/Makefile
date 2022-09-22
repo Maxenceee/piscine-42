@@ -1,24 +1,17 @@
-SRCS	=  ./display.c
-OBJS	= ${SRCS:.c=.o}
-NAME	= ft_display_file
-CC		= gcc
-RM		= rm -f
-CFLAGS	= -Wall -Wextra -Werror
+CC				=	cc
+CFILES			=	ft_display_file.c
+HEADERS_DIR		=	includes/
+CFLAGS			=	-Wall -Wextra -Werror -I $(HEADERS_DIR)
+NAME			=	ft_display_file
+OBJS			=	${CFILES:.c=.o}
 
-.c.o :
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+all: $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-${NAME} : ${OBJS}
-	${CC} ${CFLAGS} ${OBJS} -o ${NAME}
+clean:
+	rm -rf ft_display_file.o
 
-all : ${NAME}
+fclean: clean
+	rm -f $(NAME)
 
-clean :
-	${RM} ${OBJS}
-
-fclean : clean
-	${RM} ${NAME}
-
-re : fclean all
-
-.PHONY: all clean fclean re .c.o
+.PHONY: all clean fclean re

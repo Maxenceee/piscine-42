@@ -64,11 +64,11 @@ void	ft_final_board(t_board *board, int dr)
 	int	y;
 	int	u;
 
-	x = 1;
+	x = 0;
 	u = dr;
 	while (x < board->nb_rows)
 	{
-		y = 1;
+		y = 0;
 		while (y < board->nb_cols)
 		{
 			if (board->content[x][y].value == dr)
@@ -91,10 +91,10 @@ void	ft_solver_board(t_board *board)
 	int	x;
 	int	y;
 
-	x = 1;
+	x = 0;
 	while (x < board->nb_rows)
 	{
-		y = 1;
+		y = 0;
 		while (y < board->nb_cols)
 		{
 			if (board->content[x][y].type == empty)

@@ -1,10 +1,20 @@
-#ifndef __MAIN_H__
-#define __MAIN_H__
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgama <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/11 18:22:50 by mgama             #+#    #+#             */
+/*   Updated: 2022/09/11 18:22:53 by mgama            ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
 
-int check_adjacent_cell(int grid[4][4], int gap, int num);
-/* return if the number given already exist in the row and column where it is */
+#ifndef MAIN_H
+# define MAIN_H
 
-int puzzle_solver(int grid[4][4], int pattern[16], int gap);
-/* solver function, takes a matrix of `int` and an array of all entries as arguments, return 1 if solution exist and 0 if not */
+int	check_adjacent_cell(int grid[4][4], int gap, int num);
+
+int	puzzle_solver(int grid[4][4], int pattern[16], int gap);
 
 #endif

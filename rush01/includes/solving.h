@@ -1,19 +1,26 @@
-#ifndef __SOLVING_H__
-#define __SOLVING_H__
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   solving.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgama <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/11 18:22:50 by mgama             #+#    #+#             */
+/*   Updated: 2022/09/11 18:22:53 by mgama            ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
 
-int check_cell(int grid[4][4], int gap, int pattern[16]);
-/* check if proposed number should be in the current cell */
+#ifndef SOLVING_H
+# define SOLVING_H
 
-int check_col_up(int grid[4][4], int gap, int pattern[16]);
-/* check if proposed number fulfills the conditions from top */
+int	check_pattern(int grid[4][4], int gap, int pattern[16]);
 
-int check_row_right(int grid[4][4], int gap, int patern[16]);
-/* check if proposed number fulfills the conditions from right side */
+int	check_col_up(int grid[4][4], int gap, int pattern[16]);
 
-int check_col_down(int grid[4][4], int gap, int pattern[16]);
-/* check if proposed number fulfills the conditions from bottom */
+int	check_row_right(int grid[4][4], int gap, int patern[16]);
 
-int check_row_left(int grid[4][4], int gap, int pattern[16]);
-/* check if proposed number fulfills the conditions from left side */
+int	check_col_down(int grid[4][4], int gap, int pattern[16]);
+
+int	check_row_left(int grid[4][4], int gap, int pattern[16]);
 
 #endif

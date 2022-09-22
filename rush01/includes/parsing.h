@@ -1,13 +1,22 @@
-#ifndef __PARSING_H__
-#define __PARSING_H__
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgama <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/11 18:22:50 by mgama             #+#    #+#             */
+/*   Updated: 2022/09/11 18:22:53 by mgama            ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
 
-int check_arguments(int argc, char *argv[]);
-/* check if arguments given to the main function are as expected */
+#ifndef PARSING_H
+# define PARSING_H
 
-int *convert_pattern(char *str);
-/* takes a string representing each points of view of the puzzle and convert it in an array of `int` */
+int		check_arguments(int argc, char *argv[]);
 
-void print_puzzle_grid(int grid[4][4]);
-/* display a 4X4 grid given */
+int		*convert_pattern(char *str);
+
+void	print_puzzle_grid(int grid[4][4]);
 
 #endif

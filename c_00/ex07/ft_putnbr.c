@@ -19,6 +19,8 @@ void	ft_putchar(char c)
 
 void	ft_putnbr(int nb)
 {
+	unsigned int	nbr;
+
 	if (nb == -2147483648)
 	{
 		write(1, "-2147483648", 11);
@@ -27,15 +29,23 @@ void	ft_putnbr(int nb)
 	if (nb < 0)
 	{
 		ft_putchar('-');
-		nb = -nb;
-	}
-	if (nb > 9)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
+		nbr = nb * -1;
 	}
 	else
 	{
-		ft_putchar(nb + 48);
+		nbr = nb;
 	}
+	if (nbr / 10 != 0)
+	{
+		ft_putnbr(nbr / 10);
+	}
+	ft_putchar(nbr % 10 + 48);
 }
+
+/*
+int	main(void)
+{
+	ft_putnbr(-2147483648);
+	return (0);
+}
+*/

@@ -30,7 +30,8 @@ char	*ft_strdup(char *src)
 	char	*d;
 
 	index = 0;
-	d = (dest = (char *)malloc(ft_str_length(src) * sizeof(char) + 1));
+	dest = (char *)malloc(ft_str_length(src) * sizeof(char) + 1);
+	d = (dest);
 	if (!d)
 		return (0);
 	while (src[index])
@@ -48,7 +49,8 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 	struct s_stock_str	*array;
 	struct s_stock_str	*d;
 
-	d = (array = malloc((ac + 1) * sizeof(struct s_stock_str)));
+	array = malloc((ac + 1) * sizeof(struct s_stock_str));
+	d = (array);
 	if (!d)
 		return (NULL);
 	index = 0;

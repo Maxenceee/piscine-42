@@ -45,7 +45,7 @@ void	ft_write_safe_char(char *c)
 
 void	ft_print_memory_at(void *start_addr, unsigned int size, char *curr_addr)
 {
-	int index;
+	int	index;
 
 	ft_write_hex((unsigned int)curr_addr, 16, MAX_PAGE_SIZE);
 	write(1, &": ", 2);

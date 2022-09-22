@@ -13,6 +13,7 @@
 #include "do_op.h"
 #include <stdio.h>
 #include <unistd.h>
+
 int	operator(int a, char *c, int b)
 {
 	int	r;

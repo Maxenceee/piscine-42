@@ -10,40 +10,47 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strlowcase(char *str)
+int	ft_str_is_lowercase(char *str)
 {
-	int	i;
+	if (*str < 'a' || *str > 'z')
+		return (0);
+	else
+		return (1);
+}
 
-	i = 0;
-	while (str[i] != '\0')
+int	ft_str_is_uppercase(char *str)
+{
+	if (*str < 'A' || *str > 'Z')
+		return (0);
+	else
+		return (1);
+}
+
+int	ft_str_is_alpha(char *str)
+{
+	if ((*str < 'A' || (*str > 'Z' && *str < 'a') || *str > 'z'))
 	{
-		if (str[i] >= 'A' && str[i] <= 'Z')
-			str[i] += 32;
-		i++;
+		if (!(*str >= 48 && *str <= 57))
+			return (0);
 	}
-	return (str);
+	return (1);
 }
 
 char	*ft_strcapitalize(char *str)
 {
-	int		i;
-	int		j;
+	int	i;
 
 	i = 0;
-	j = 1;
-	ft_strlowcase(str);
-	while (str[i] != '\0')
+	while (str[i] != 0)
 	{
-		if (str[i] >= 'a' && str[i] <= 'z')
+		if (ft_str_is_lowercase(&str[i]) && (ft_str_is_alpha(&str[i - 1]) == 0))
 		{
-			if (j == 1)
-				str[i] -= 32;
-			    j = 0;
+			str[i] -= 32;
 		}
-		else if (str[i] >= '0' && str[i] <= '9')
-			j = 0;
-		else
-			j = 1;
+		else if (ft_str_is_uppercase(&str[i]) && ft_str_is_alpha(&str[i]))
+		{
+			str[i] += 32;
+		}
 		i++;
 	}
 	return (str);

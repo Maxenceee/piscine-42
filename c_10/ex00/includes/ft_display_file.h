@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_str.h                                     :+:      :+:    :+:   */
+/*   ft_display_file.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgama <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 13:27:33 by mgama             #+#    #+#             */
-/*   Updated: 2022/09/14 13:27:35 by mgama            ###   ########lyon.fr   */
+/*   Created: 2022/09/14 23:43:11 by mgama             #+#    #+#             */
+/*   Updated: 2022/09/14 23:43:18 by mgama            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STOCK_STR_H
-# define FT_STOCK_STR_H
+#ifndef FT_DISPLAY_FILE_H
+# define FT_DISPLAY_FILE_H
 
-typedef struct s_stock_str
-{
-	int			size;
-	char		*str;
-	char		*copy;
-}				t_stock_str;
+# define FILE_MISSING "File name missing."
+# define TOO_MANY_ARGUMENT "Too many arguments."
+# define CANNOT_READ "Cannot read file."
 
 #endif

@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_list.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgama <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/31 14:54:22 by mgama             #+#    #+#             */
-/*   Updated: 2022/09/01 18:22:32 by mgama            ###   ########lyon.fr   */
+/*   Created: 2022/09/21 15:47:51 by mgama             #+#    #+#             */
+/*   Updated: 2022/09/21 15:47:55 by mgama            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#ifndef FR_LIST_H
+# define FR_LIST_H
 
-void	ft_putchar(char c)
+typedef struct s_List
 {
-	write(1, &c, 1);
-}
+	void	*data;
+	t_list	next;
+}	t_list;
+
+#endif

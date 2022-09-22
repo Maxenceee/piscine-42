@@ -10,18 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-
-int	ft_str_length(char *str)
-{
-	int	index;
-
-	index = 0;
-	while (str[index])
-		index++;
-	return (index);
-}
+#include "functions.h"
 
 char	*ft_strcpy(char *dest, char *src)
 {
@@ -82,13 +71,3 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	*d = '\0';
 	return (string);
 }
-
-/*
-int	main(void)
-{
-	char	*a[] = {"abcd" ,"efgh", "ijkl"};
-
-	printf("%s", ft_strjoin(3, a, "--"));
-	return (0);
-}
-*/

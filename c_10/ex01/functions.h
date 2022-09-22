@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgama <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/03 14:49:53 by mgama             #+#    #+#             */
-/*   Updated: 2022/09/03 14:51:13 by mgama            ###   ########lyon.fr   */
+/*   Created: 2022/09/21 11:37:17 by mgama             #+#    #+#             */
+/*   Updated: 2022/09/21 11:37:18 by mgama            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#ifndef FUNCTIONS_H
+# define FUNCTIONS_H
 
-void	ft_putstr(char	*str)
-{
-	while (*str != '\0')
-	{
-		write(1, str, 1);
-		str++;
-	}
-}
+# include <stdio.h>
+
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdlib.h>
+
+int		ft_strlen(char	*str);
+char	*read_file(char *board_name);
+
+char	*ft_strjoin(int size, char **strs, char *sep);
+int		ft_compute_final_length(char **strings, int size, int sep_length);
+char	*ft_strcpy(char *dest, char *src);
+
+#endif
