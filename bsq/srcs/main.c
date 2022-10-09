@@ -14,8 +14,6 @@
 #include "parsing.h"
 #include "functions.h"
 
-#include <stdio.h>
-
 void	ft_board(char *board_name, int l)
 {
 	t_board	board;

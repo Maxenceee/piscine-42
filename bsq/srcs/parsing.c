@@ -44,7 +44,6 @@ t_board	parse_map(char *map)
 t_board_parsed	read_file(char *board_name)
 {
 	int				of;
-	int				c;
 	char			ch[30000];
 	t_board_parsed	board;
 
@@ -54,7 +53,7 @@ t_board_parsed	read_file(char *board_name)
 		board.size = 0;
 		return (board);
 	}
-	c = read(of, ch, 30000);
+	read(of, ch, 30000);
 	if (close(of) < 0)
 	{
 		board.size = 0;

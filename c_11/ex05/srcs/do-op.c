@@ -40,12 +40,10 @@ int	operator(int a, char *c, int b)
 
 void	do_op(char *n, char *c, char *m)
 {
-	int	i;
 	int	a;
 	int	b;
 	int	r;
 
-	i = 0;
 	r = 1;
 	a = ft_atoi(n);
 	b = ft_atoi(m);
