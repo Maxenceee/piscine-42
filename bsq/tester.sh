@@ -58,4 +58,19 @@ perl resources/board_generator.pl 15 15 2
 perl resources/board_generator.pl 15 15 1
 ./bsq board_test.txt
 
+perl resources/board_generator.pl 1 1 1
+./bsq board_test.txt
+
+perl resources/board_generator.pl 1 1 0
+./bsq board_test.txt
+
+perl resources/board_generator.pl 2 2 0
+./bsq board_test.txt
+
+perl resources/board_generator.pl 2 2 1
+./bsq board_test.txt
+
+perl resources/board_generator.pl 2 2 2
+./bsq board_test.txt
+
 make clean

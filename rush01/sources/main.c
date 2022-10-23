@@ -70,6 +70,7 @@ int	main(int argc, char *argv[])
 
 	if (check_arguments(argc, argv) == 1)
 	{
+		ft_putstr("Error\n");
 		return (1);
 	}
 	pattern = convert_pattern(argv[1]);

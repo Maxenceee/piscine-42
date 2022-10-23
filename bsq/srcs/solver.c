@@ -91,7 +91,7 @@ void	ft_solver_board(t_board *board)
 	int	x;
 	int	y;
 
-	x = 0;
+	x = 1;
 	while (x < board->nb_rows)
 	{
 		y = 0;

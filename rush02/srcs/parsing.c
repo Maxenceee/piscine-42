@@ -32,7 +32,6 @@ t_parsed_dict	parse_dict(char *dict_name)
 t_dict	read_file(char *dict_name)
 {
 	int		of;
-	int		c;
 	char	ch[30000];
 	t_dict	dict;
 
@@ -43,7 +42,7 @@ t_dict	read_file(char *dict_name)
 		dict.size = 0;
 		return (dict);
 	}
-	c = read(of, ch, 30000);
+	read(of, ch, 30000);
 	if (close(of) < 0)
 	{
 		print_error("Dict Error\n");
