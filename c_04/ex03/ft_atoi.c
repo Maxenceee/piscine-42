@@ -12,9 +12,9 @@
 
 int	ft_atoi(char *str)
 {
-	int	i;
-	int	nbr;
-	int	sign;
+	int				i;
+	unsigned int	nbr;
+	int				sign;
 
 	i = 0;
 	nbr = 0;
