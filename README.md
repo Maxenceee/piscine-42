@@ -1,7 +1,7 @@
 # Piscine 42 Lyon
 
 My solutions for the September Piscine 2022.
-`Don't Copy, Learn.` <br />
+`Don't Copy, Learn.`
 
 # Table of Content
 | Projects      | Solutions  |
