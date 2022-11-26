@@ -36,4 +36,4 @@ My solutions for the September Piscine 2022. <br>
 C_00, C_02 has been corrected following the piscine.
 Some were automatically evaluated by MOULINETTE but the results were replaced by 0.
 
-`Enjoy coding and GOOD LUCK in your piscine.`
+`Enjoy coding and GOOD LUCK for your piscine.`
