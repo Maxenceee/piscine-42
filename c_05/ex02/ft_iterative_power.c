@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_iterative_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 14:54:02 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/08 19:40:32 by mgama            ###   ########.fr       */
+/*   Updated: 2022/12/29 15:32:52 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 int	ft_iterative_power(int nb, int power)
 {
