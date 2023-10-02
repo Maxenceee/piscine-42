@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:17:58 by ileconte          #+#    #+#             */
-/*   Updated: 2023/10/02 13:22:54 by mgama            ###   ########.fr       */
+/*   Updated: 2023/10/02 14:02:59 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ void	ft_final_board(t_board *board, int dr)
 
 	x = 0;
 	u = dr;
-	while (x < board->nb_cols)
+	while (x < board->nb_rows)
 	{
 		y = 0;
-		while (y < board->nb_rows)
+		while (y < board->nb_cols)
 		{
 			if (board->content[x][y].value == dr)
 			{
