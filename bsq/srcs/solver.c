@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:17:58 by ileconte          #+#    #+#             */
-/*   Updated: 2022/11/08 19:33:02 by mgama            ###   ########.fr       */
+/*   Updated: 2023/10/02 13:22:54 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ void	ft_final_board(t_board *board, int dr)
 
 	x = 0;
 	u = dr;
-	while (x < board->nb_rows)
+	while (x < board->nb_cols)
 	{
 		y = 0;
-		while (y < board->nb_cols)
+		while (y < board->nb_rows)
 		{
 			if (board->content[x][y].value == dr)
 			{
@@ -103,11 +103,13 @@ void	ft_solver_board(t_board *board)
 						board->content[x][y - 1].type != empty ||
 						board->content[x - 1][y - 1].type != empty)
 					board->content[x][y].value = 1;
-				else
+				else if (x - 1 >= 0 && y - 1 >= 0)
+				{
 					board->content[x][y].value = min(min(
 								board->content[x - 1][y].value,
 								board->content[x][y - 1].value),
 							board->content[x - 1][y - 1].value) + 1;
+				}
 			}
 			y++;
 		}

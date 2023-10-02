@@ -3,29 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 14:11:24 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/08 19:32:41 by mgama            ###   ########.fr       */
+/*   Updated: 2023/10/02 12:45:26 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
 #include "parsing.h"
 #include "functions.h"
-
-int	ft_strlen(char	*str)
-{
-	int	count;
-
-	count = 0;
-	while (*str != '\0')
-	{
-		str++;
-		count++;
-	}
-	return (count);
-}
 
 int	ft_tablen(char	**str)
 {
@@ -47,11 +34,9 @@ t_display_characters	parse_diplay_characters(char *line)
 
 	i = 0;
 	u = ft_strlen(line);
+	res.nb_lines = 0;
 	if (!is_correct_params(line))
-	{
-		res.nb_lines = 0;
 		return (res);
-	}
 	while (u - i - 1 >= 0)
 	{
 		if (u - i == u - 3)

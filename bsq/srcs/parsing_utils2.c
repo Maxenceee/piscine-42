@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 14:11:24 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/08 19:32:46 by mgama            ###   ########.fr       */
+/*   Updated: 2023/10/02 13:34:13 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	is_correct_params(char *line)
 	u = ft_strlen(line);
 	if (u < 4)
 		return (0);
+	while (line[i] && line[i] >= 48 && line[i] <= 57)
+		i++;
 	while (line[i] != '\0')
 	{
 		if (line[i] < 32 || line[i] > 126)

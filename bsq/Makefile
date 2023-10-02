@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mgama <mgama@student.42.fr>                +#+  +:+       +#+         #
+#    By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 19:33:10 by mgama             #+#    #+#              #
-#    Updated: 2022/11/08 19:33:11 by mgama            ###   ########.fr        #
+#    Updated: 2023/10/02 13:42:02 by mgama            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC			=	gcc
-CFILES		=	srcs/ft_split.c srcs/parsing_utils.c srcs/solver.c srcs/main.c srcs/parsing_utils2.c srcs/parsing.c srcs/printer.c
+CFILES		=	srcs/ft_split.c srcs/parsing_utils.c srcs/solver.c srcs/main.c srcs/parsing_utils2.c srcs/parsing.c srcs/printer.c srcs/read_file.c
 HEADERS_DIR	=	includes/
 CFLAGS		=	-Wall -Wextra -Werror -I $(HEADERS_DIR)
 NAME		=	bsq
@@ -25,3 +25,5 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+
+re: fclean clean

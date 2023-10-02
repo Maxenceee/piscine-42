@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:33:50 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/08 19:32:36 by mgama            ###   ########.fr       */
+/*   Updated: 2023/10/02 13:35:13 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,12 @@ int	main(int argc, char *argv[])
 {
 	int		i;
 	char	*buffer;
-	char	buff[30000];
 
 	i = 0;
+	buffer = NULL;
 	if (argc == 1)
 	{
-		buffer = malloc(sizeof(char) * 3000);
-		while (read(0, &buff, 1))
-			buffer[i++] = *buff;
-		buffer[i] = '\0';
-		ft_print_char('\n');
+		buffer = ft_read_file(0, buffer);
 		if (ft_strlen(buffer) > 0)
 			ft_board(buffer, 1);
 		else
