@@ -6,7 +6,7 @@
 #    By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 19:33:10 by mgama             #+#    #+#              #
-#    Updated: 2023/10/02 13:42:02 by mgama            ###   ########.fr        #
+#    Updated: 2023/10/02 13:44:44 by mgama            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,3 +27,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean clean
+
+.PHONY:	all clean fclean re
