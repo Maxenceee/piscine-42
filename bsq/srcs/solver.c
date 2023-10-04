@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:17:58 by ileconte          #+#    #+#             */
-/*   Updated: 2023/10/02 14:02:59 by mgama            ###   ########.fr       */
+/*   Updated: 2023/10/04 20:41:54 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,10 @@ void	ft_solver_board(t_board *board)
 						board->content[x - 1][y - 1].type != empty)
 					board->content[x][y].value = 1;
 				else if (x - 1 >= 0 && y - 1 >= 0)
-				{
 					board->content[x][y].value = min(min(
 								board->content[x - 1][y].value,
 								board->content[x][y - 1].value),
 							board->content[x - 1][y - 1].value) + 1;
-				}
 			}
 			y++;
 		}
