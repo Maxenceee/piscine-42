@@ -6,7 +6,7 @@
 #    By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 19:33:10 by mgama             #+#    #+#              #
-#    Updated: 2023/10/02 13:45:06 by mgama            ###   ########.fr        #
+#    Updated: 2023/10/04 19:52:53 by mgama            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS		=	-Wall -Wextra -Werror -I $(HEADERS_DIR)
 NAME		=	bsq
 OBJS		=	${CFILES:.c=.o}
 
-all: $(OBJS)
+all: $(OBJS) $(HEADERS_DIR)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean:

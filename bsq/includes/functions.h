@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 19:01:24 by mgama             #+#    #+#             */
-/*   Updated: 2023/10/02 12:31:36 by mgama            ###   ########.fr       */
+/*   Updated: 2023/10/04 19:52:06 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4096
 # endif /* BUFFER_SIZE */
+
+void		free_tab(char **tab);
 
 int			check_separator(char c, char *charset);
 int			count_strings(char *str, char *charset);

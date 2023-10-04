@@ -6,7 +6,7 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 14:11:24 by mgama             #+#    #+#             */
-/*   Updated: 2023/10/02 13:35:19 by mgama            ###   ########.fr       */
+/*   Updated: 2023/10/04 20:14:19 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_board	parse_board(char *board_name)
 		return (parsed_board);
 	}
 	parsed_board = parse_to_tab(board);
+	free(board.content);
 	return (parsed_board);
 }
 
@@ -38,6 +39,7 @@ t_board	parse_map(char *map)
 	board.content = map;
 	board.size = ft_strlen(map);
 	parsed_board = parse_to_tab(board);
+	free(board.content);
 	return (parsed_board);
 }
 
@@ -101,14 +103,15 @@ t_board	parse_to_tab(t_board_parsed board)
 		return (parsed_board);
 	line_sett = parse_diplay_characters(lines_split[0]);
 	if (!line_sett.nb_lines)
-		return (parsed_board);
+		return (free_tab(lines_split), parsed_board);
 	parse_rows_cols(&parsed_board, line_sett, lines_split);
 	if (parsed_board.nb_cols == 0 || parsed_board.nb_rows == 0)
-		return (parsed_board);
+		return (free_tab(lines_split), parsed_board);
 	fnl = malloc(sizeof(t_cell *) * parsed_board.nb_rows);
 	if (!fnl)
-		return (parsed_board);
+		return (free_tab(lines_split), parsed_board);
 	if (string_to_object(lines_split + 1, &parsed_board, fnl) == 0)
 		parsed_board.nb_rows = 0;
+	free_tab(lines_split);
 	return (parsed_board);
 }

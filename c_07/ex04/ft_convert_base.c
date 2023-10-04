@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgama <mgama@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 21:50:47 by mgama             #+#    #+#             */
-/*   Updated: 2022/11/08 19:42:13 by mgama            ###   ########.fr       */
+/*   Updated: 2023/10/04 16:29:25 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,26 +105,23 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	char	*finalnbr;
 	int		mednbr;
 	int		lenght_nbrf;
-	char	*d;
 
 	if (checkerror(base_to) == 0 || checkerror(base_from) == 0)
 		return (0);
 	mednbr = ft_atoi_base(nbr, base_from);
 	lenght_nbrf = lenght_nbr(mednbr, base_to, 0);
 	finalnbr = (char *)malloc(sizeof(char) * (lenght_nbrf + 1));
-	d = (finalnbr);
-	if (!d)
+	if (!finalnbr)
 		return (0);
 	ft_putnbr_base_v2(mednbr, base_to, finalnbr);
 	finalnbr[lenght_nbrf] = '\0';
 	return (finalnbr);
 }
 
-/*
-#include <stdio.h>
+// #include <stdio.h>
 
-int	main(int argc, char **argv)
-{
-	printf("%d\n%s", argc, ft_convert_base(argv[1], argv[2], argv[3]));
-}
-*/
+// int	main(int ac, char **av)
+// {
+// 	if (ac == 4)
+// 		printf("%s\n", ft_convert_base(av[1], av[2], av[3]));
+// }

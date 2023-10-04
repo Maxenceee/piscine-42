@@ -6,13 +6,37 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:33:50 by mgama             #+#    #+#             */
-/*   Updated: 2023/10/02 14:02:04 by mgama            ###   ########.fr       */
+/*   Updated: 2023/10/04 20:14:08 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
 #include "parsing.h"
 #include "functions.h"
+
+void	free_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i++]);
+	}
+	free(tab);
+}
+
+void	free_cell(t_cell **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i++]);
+	}
+	free(tab);
+}
 
 void	ft_board(char *board_name, int l)
 {
@@ -26,12 +50,13 @@ void	ft_board(char *board_name, int l)
 			board = parse_map(board_name);
 	}
 	if (board.nb_rows == 0 || board.nb_cols == 0)
-		print_error("map error\n");
+		return (print_error("map error\n"));
 	else
 	{
 		ft_solver_board(&board);
 		ft_final_board(&board, ft_max_cell(&board));
 		board_printer(board);
+		free_cell(board.content);
 	}
 }
 
