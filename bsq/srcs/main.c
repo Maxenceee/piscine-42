@@ -6,13 +6,14 @@
 /*   By: mgama <mgama@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:33:50 by mgama             #+#    #+#             */
-/*   Updated: 2023/10/04 20:14:08 by mgama            ###   ########.fr       */
+/*   Updated: 2023/10/07 04:38:28 by mgama            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
 #include "parsing.h"
 #include "functions.h"
+#include <stdio.h>
 
 void	free_tab(char **tab)
 {
@@ -56,7 +57,7 @@ void	ft_board(char *board_name, int l)
 		ft_solver_board(&board);
 		ft_final_board(&board, ft_max_cell(&board));
 		board_printer(board);
-		free_cell(board.content);
+		// free_cell(board.content);
 	}
 }
 
