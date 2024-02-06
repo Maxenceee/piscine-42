@@ -1,4 +1,4 @@
-*.o
+.DS_Store
 bsq
 a.out
-.DS_Store
+.objs
